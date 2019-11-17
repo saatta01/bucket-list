@@ -1,0 +1,19 @@
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  font-size: 18px;
+  background-color: rgba(250, 247, 247, .2);
+  height: 5vh;
+  width: 100%;
+  margin-bottom: .5vh;
+  padding-top: 1.5vh;
+  padding-left: 50px;
+}
+
+i {
+  float: right;
+  padding-right: 5%;
+}
