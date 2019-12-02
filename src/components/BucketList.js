@@ -16,6 +16,11 @@ class BucketList extends React.Component {
   //   }
   // }
 
+  state = {
+    inactiveItems: [],
+    activeItems: []
+  };
+
   onTrashClick = (index) => {
     this.props.onRemoveBucketItem(index);
   }
@@ -23,7 +28,13 @@ class BucketList extends React.Component {
   bucketItems() {
       if(this.props.bucketList !== undefined && this.props.bucketList.length !== 0) {
         console.log(`the bucket list items are: ${this.props.bucketList}`);
-        const listItems = this.props.bucketList.map((item, index) => <li key={index}>{item}<i className="trash alternate outline icon" onClick={(e) => this.onTrashClick(index)}></i></li>);
+        const listItems = this.props.bucketList.map((item, index) => (
+          <li key={index}>
+            {item}
+            <i className="trash alternate outline icon" onClick={(e) => this.onTrashClick(index)}></i>
+            <i className="circle outline icon"></i>
+          </li>
+        ));
         return (
           <ul>{listItems}</ul>
         )
