@@ -16,25 +16,45 @@ class BucketList extends React.Component {
   //   }
   // }
 
-  state = {
-    inactiveItems: [],
-    activeItems: []
-  };
 
   onTrashClick = (index) => {
     this.props.onRemoveBucketItem(index);
   }
 
+  onCheckClick = (index) => {
+    this.props.onToggleCheck(index);
+  }
+
   bucketItems() {
       if(this.props.bucketList !== undefined && this.props.bucketList.length !== 0) {
         console.log(`the bucket list items are: ${this.props.bucketList}`);
-        const listItems = this.props.bucketList.map((item, index) => (
-          <li key={index}>
-            {item}
-            <i className="trash alternate outline icon" onClick={(e) => this.onTrashClick(index)}></i>
-            <i className="circle outline icon"></i>
-          </li>
-        ));
+        const listItems = this.props.bucketList.map((item, index) => {
+          if (item.checked === false) {
+            return (
+              <li key={index}>
+                <span>{item.input}</span>
+                <i className="trash alternate outline icon" onClick={(e) => this.onTrashClick(index)}></i>
+                <i className="circle outline icon" onClick={(e) => this.onCheckClick(index)}></i>
+              </li>
+            );
+          }
+          else if (item.checked === true){
+            return(
+              <li key={index}>
+                <span className="checked">{item.input}</span>
+                <i className="trash alternate outline icon" onClick={(e) => this.onTrashClick(index)}></i>
+                <i className="check circle outline icon" onClick={(e) => this.onCheckClick(index)}></i>
+              </li>
+            );
+          }
+
+
+          // <li key={index}>
+          //   {item.input}
+          //   <i className="trash alternate outline icon" onClick={(e) => this.onTrashClick(index)}></i>
+          //   <i className="circle outline icon"></i>
+          // </li>
+        });
         return (
           <ul>{listItems}</ul>
         )

@@ -17,3 +17,17 @@ i {
   float: right;
   padding-right: 5%;
 }
+
+.checked {
+  color: #FEBFBF;
+  text-decoration: line-through;
+}
+
+@keyframes strikethrough {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
